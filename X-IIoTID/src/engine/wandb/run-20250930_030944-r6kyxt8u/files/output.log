@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_config.py", line 165, in __getattr__
+    return self.__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_config.py", line 130, in __getitem__
+    return self._items[key]
+           ~~~~~~~~~~~^^^^^
+KeyError: 'batch_size'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py", line 291, in <module>
+    run_hyperparameter_sweep(
+  File "C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py", line 236, in run_hyperparameter_sweep
+    train_function = sweep_train(
+                     ^^^^^^^^^^^^
+  File "C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py", line 193, in sweep_train
+    train_dataset, batch_size=config.batch_size, shuffle=True
+                              ^^^^^^^^^^^^^^^^^
+  File "C:\Python311\Lib\site-packages\wandb\sdk\wandb_config.py", line 167, in __getattr__
+    raise AttributeError(
+AttributeError: <class 'wandb.sdk.wandb_config.Config'> object has no attribute 'batch_size'

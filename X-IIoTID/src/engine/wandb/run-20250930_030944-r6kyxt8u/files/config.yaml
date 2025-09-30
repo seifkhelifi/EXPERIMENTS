@@ -1,0 +1,53 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            atf880nixf20a9h6ucl4894h2yedxqgy:
+                args:
+                    - --train_type
+                    - binary
+                codePath: hyper_param_search.py
+                codePathLocal: hyper_param_search.py
+                cpu_count: 12
+                cpu_count_logical: 16
+                cudaVersion: "12.7"
+                disk:
+                    /:
+                        total: "510930186240"
+                        used: "447573721088"
+                email: khelifiseif1@gmail.com
+                executable: C:\Python311\python.exe
+                gpu: NVIDIA GeForce RTX 3050 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 2048
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce RTX 3050 Laptop GPU
+                      uuid: GPU-7290d439-dbff-fec8-c758-a2b559dc23e2
+                host: DESKTOP-AN4INLM
+                memory:
+                    total: "25439227904"
+                os: Windows-10-10.0.26100-SP0
+                program: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py
+                python: CPython 3.11.4
+                root: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine
+                startedAt: "2025-09-30T02:09:44.113845Z"
+                writerId: atf880nixf20a9h6ucl4894h2yedxqgy
+        m: []
+        python_version: 3.11.4
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+            "4": 3.11.4
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64

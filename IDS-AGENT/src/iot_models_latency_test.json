@@ -1,0 +1,684 @@
+{
+  "test_metadata": {
+    "timestamp": "2025-08-30T23:36:13.911240",
+    "test_flow": "Network flow from IoT device 192.168.1.101 to server 10.0.0.2 on port 80 using TCP, duration 0.1 seconds, 1 forward packet, 0 backward packets, 64 bytes total. SYN flag set, no FIN flag.",
+    "total_models_tested": 15,
+    "successful_tests": 15,
+    "failed_tests": 0
+  },
+  "model_results": {
+    "deepseek-r1-distill-llama-70b": {
+      "total_flow_latency_seconds": 12.2365,
+      "llm_calls_made": 4,
+      "individual_call_latencies": [
+        3.9197,
+        2.7787,
+        2.9386,
+        2.5995
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "device_profiler",
+          "latency_seconds": 3.9197,
+          "thought_length": 253,
+          "reasoning_length": 78
+        },
+        {
+          "step": 2,
+          "action_type": "threat_intel",
+          "latency_seconds": 2.7787,
+          "thought_length": 373,
+          "reasoning_length": 71
+        },
+        {
+          "step": 3,
+          "action_type": "attack_signature",
+          "latency_seconds": 2.9386,
+          "thought_length": 428,
+          "reasoning_length": 123
+        },
+        {
+          "step": 4,
+          "action_type": "respond",
+          "latency_seconds": 2.5995,
+          "thought_length": 345,
+          "reasoning_length": 129
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 3.0591,
+        "median_call_latency": 2.8586,
+        "min_call_latency": 2.5995,
+        "max_call_latency": 3.9197,
+        "total_llm_time": 12.2365,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.5902
+      }
+    },
+    "gemma2-9b-it": {
+      "total_flow_latency_seconds": 0.6256,
+      "llm_calls_made": 1,
+      "individual_call_latencies": [
+        0.6256
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "respond",
+          "latency_seconds": 0.6256,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.6256,
+        "median_call_latency": 0.6256,
+        "min_call_latency": 0.6256,
+        "max_call_latency": 0.6256,
+        "total_llm_time": 0.6256,
+        "overhead_time": 0.0
+      }
+    },
+    "llama-3.1-8b-instant": {
+      "total_flow_latency_seconds": 3.2421,
+      "llm_calls_made": 6,
+      "individual_call_latencies": [
+        0.5613,
+        0.5131,
+        0.4198,
+        0.4217,
+        0.4526,
+        0.8736
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.5613,
+          "thought_length": 60,
+          "reasoning_length": 72
+        },
+        {
+          "step": 2,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.5131,
+          "thought_length": 159,
+          "reasoning_length": 140
+        },
+        {
+          "step": 3,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.4198,
+          "thought_length": 75,
+          "reasoning_length": 92
+        },
+        {
+          "step": 4,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.4217,
+          "thought_length": 75,
+          "reasoning_length": 106
+        },
+        {
+          "step": 5,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.4526,
+          "thought_length": 75,
+          "reasoning_length": 109
+        },
+        {
+          "step": 6,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.8736,
+          "thought_length": 52,
+          "reasoning_length": 211
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.5403,
+        "median_call_latency": 0.4828,
+        "min_call_latency": 0.4198,
+        "max_call_latency": 0.8736,
+        "total_llm_time": 3.2421,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.1723
+      }
+    },
+    "llama-3.3-70b-versatile": {
+      "total_flow_latency_seconds": 5.3489,
+      "llm_calls_made": 6,
+      "individual_call_latencies": [
+        0.9188,
+        0.7162,
+        0.7405,
+        0.7224,
+        1.2971,
+        0.954
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.9188,
+          "thought_length": 338,
+          "reasoning_length": 161
+        },
+        {
+          "step": 2,
+          "action_type": "flow_correlation",
+          "latency_seconds": 0.7162,
+          "thought_length": 294,
+          "reasoning_length": 172
+        },
+        {
+          "step": 3,
+          "action_type": "device_profiler",
+          "latency_seconds": 0.7405,
+          "thought_length": 401,
+          "reasoning_length": 123
+        },
+        {
+          "step": 4,
+          "action_type": "threat_intel",
+          "latency_seconds": 0.7224,
+          "thought_length": 292,
+          "reasoning_length": 141
+        },
+        {
+          "step": 5,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 1.2971,
+          "thought_length": 599,
+          "reasoning_length": 223
+        },
+        {
+          "step": 6,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.954,
+          "thought_length": 237,
+          "reasoning_length": 194
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.8915,
+        "median_call_latency": 0.8296,
+        "min_call_latency": 0.7162,
+        "max_call_latency": 1.2971,
+        "total_llm_time": 5.3489,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.2242
+      }
+    },
+    "llama3-70b-8192": {
+      "total_flow_latency_seconds": 4.394,
+      "llm_calls_made": 6,
+      "individual_call_latencies": [
+        0.75,
+        0.6821,
+        0.6584,
+        0.6231,
+        0.5997,
+        1.0787
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "device_profiler",
+          "latency_seconds": 0.75,
+          "thought_length": 103,
+          "reasoning_length": 110
+        },
+        {
+          "step": 2,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.6821,
+          "thought_length": 73,
+          "reasoning_length": 94
+        },
+        {
+          "step": 3,
+          "action_type": "threat_intel",
+          "latency_seconds": 0.6584,
+          "thought_length": 136,
+          "reasoning_length": 76
+        },
+        {
+          "step": 4,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.6231,
+          "thought_length": 73,
+          "reasoning_length": 65
+        },
+        {
+          "step": 5,
+          "action_type": "flow_correlation",
+          "latency_seconds": 0.5997,
+          "thought_length": 132,
+          "reasoning_length": 116
+        },
+        {
+          "step": 6,
+          "action_type": "respond",
+          "latency_seconds": 1.0787,
+          "thought_length": 132,
+          "reasoning_length": 573
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.732,
+        "median_call_latency": 0.6703,
+        "min_call_latency": 0.5997,
+        "max_call_latency": 1.0787,
+        "total_llm_time": 4.392,
+        "overhead_time": 0.002,
+        "std_dev_latency": 0.1776
+      }
+    },
+    "llama3-8b-8192": {
+      "total_flow_latency_seconds": 1.8374,
+      "llm_calls_made": 4,
+      "individual_call_latencies": [
+        0.6683,
+        0.4067,
+        0.3817,
+        0.3807
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.6683,
+          "thought_length": 78,
+          "reasoning_length": 130
+        },
+        {
+          "step": 2,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.4067,
+          "thought_length": 110,
+          "reasoning_length": 163
+        },
+        {
+          "step": 3,
+          "action_type": "device_profiler",
+          "latency_seconds": 0.3817,
+          "thought_length": 143,
+          "reasoning_length": 104
+        },
+        {
+          "step": 4,
+          "action_type": "respond",
+          "latency_seconds": 0.3807,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.4594,
+        "median_call_latency": 0.3942,
+        "min_call_latency": 0.3807,
+        "max_call_latency": 0.6683,
+        "total_llm_time": 1.8374,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.1398
+      }
+    },
+    "meta-llama/llama-4-maverick-17b-128e-instruct": {
+      "total_flow_latency_seconds": 3.841,
+      "llm_calls_made": 6,
+      "individual_call_latencies": [
+        0.5457,
+        0.5897,
+        1.117,
+        0.5108,
+        0.539,
+        0.5387
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "device_profiler",
+          "latency_seconds": 0.5457,
+          "thought_length": 304,
+          "reasoning_length": 143
+        },
+        {
+          "step": 2,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 0.5897,
+          "thought_length": 418,
+          "reasoning_length": 150
+        },
+        {
+          "step": 3,
+          "action_type": "threat_intel",
+          "latency_seconds": 1.117,
+          "thought_length": 405,
+          "reasoning_length": 117
+        },
+        {
+          "step": 4,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.5108,
+          "thought_length": 335,
+          "reasoning_length": 120
+        },
+        {
+          "step": 5,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.539,
+          "thought_length": 282,
+          "reasoning_length": 124
+        },
+        {
+          "step": 6,
+          "action_type": "flow_correlation",
+          "latency_seconds": 0.5387,
+          "thought_length": 319,
+          "reasoning_length": 127
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.6402,
+        "median_call_latency": 0.5424,
+        "min_call_latency": 0.5108,
+        "max_call_latency": 1.117,
+        "total_llm_time": 3.841,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.235
+      }
+    },
+    "meta-llama/llama-4-scout-17b-16e-instruct": {
+      "total_flow_latency_seconds": 1.2678,
+      "llm_calls_made": 2,
+      "individual_call_latencies": [
+        0.7273,
+        0.5405
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "threat_intel",
+          "latency_seconds": 0.7273,
+          "thought_length": 307,
+          "reasoning_length": 81
+        },
+        {
+          "step": 2,
+          "action_type": "respond",
+          "latency_seconds": 0.5405,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.6339,
+        "median_call_latency": 0.6339,
+        "min_call_latency": 0.5405,
+        "max_call_latency": 0.7273,
+        "total_llm_time": 1.2678,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.1321
+      }
+    },
+    "meta-llama/llama-guard-4-12b": {
+      "total_flow_latency_seconds": 0.5371,
+      "llm_calls_made": 1,
+      "individual_call_latencies": [
+        0.5359
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "respond",
+          "latency_seconds": 0.5359,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.5359,
+        "median_call_latency": 0.5359,
+        "min_call_latency": 0.5359,
+        "max_call_latency": 0.5359,
+        "total_llm_time": 0.5359,
+        "overhead_time": 0.0013
+      }
+    },
+    "meta-llama/llama-prompt-guard-2-22m": {
+      "total_flow_latency_seconds": 0.2369,
+      "llm_calls_made": 1,
+      "individual_call_latencies": [
+        0.2369
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "respond",
+          "latency_seconds": 0.2369,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.2369,
+        "median_call_latency": 0.2369,
+        "min_call_latency": 0.2369,
+        "max_call_latency": 0.2369,
+        "total_llm_time": 0.2369,
+        "overhead_time": 0.0
+      }
+    },
+    "meta-llama/llama-prompt-guard-2-86m": {
+      "total_flow_latency_seconds": 0.2376,
+      "llm_calls_made": 1,
+      "individual_call_latencies": [
+        0.2376
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "respond",
+          "latency_seconds": 0.2376,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.2376,
+        "median_call_latency": 0.2376,
+        "min_call_latency": 0.2376,
+        "max_call_latency": 0.2376,
+        "total_llm_time": 0.2376,
+        "overhead_time": 0.0
+      }
+    },
+    "moonshotai/kimi-k2-instruct": {
+      "total_flow_latency_seconds": 3.9943,
+      "llm_calls_made": 3,
+      "individual_call_latencies": [
+        1.7177,
+        0.9567,
+        1.3199
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "attack_signature",
+          "latency_seconds": 1.7177,
+          "thought_length": 685,
+          "reasoning_length": 191
+        },
+        {
+          "step": 2,
+          "action_type": "threat_intel",
+          "latency_seconds": 0.9567,
+          "thought_length": 482,
+          "reasoning_length": 231
+        },
+        {
+          "step": 3,
+          "action_type": "respond",
+          "latency_seconds": 1.3199,
+          "thought_length": 475,
+          "reasoning_length": 326
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 1.3314,
+        "median_call_latency": 1.3199,
+        "min_call_latency": 0.9567,
+        "max_call_latency": 1.7177,
+        "total_llm_time": 3.9943,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.3806
+      }
+    },
+    "openai/gpt-oss-120b": {
+      "total_flow_latency_seconds": 6.5457,
+      "llm_calls_made": 5,
+      "individual_call_latencies": [
+        1.0481,
+        2.2848,
+        0.8121,
+        0.9996,
+        1.4012
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "device_profiler",
+          "latency_seconds": 1.0481,
+          "thought_length": 325,
+          "reasoning_length": 135
+        },
+        {
+          "step": 2,
+          "action_type": "protocol_analysis",
+          "latency_seconds": 2.2848,
+          "thought_length": 400,
+          "reasoning_length": 128
+        },
+        {
+          "step": 3,
+          "action_type": "threat_intel",
+          "latency_seconds": 0.8121,
+          "thought_length": 370,
+          "reasoning_length": 153
+        },
+        {
+          "step": 4,
+          "action_type": "attack_signature",
+          "latency_seconds": 0.9996,
+          "thought_length": 267,
+          "reasoning_length": 113
+        },
+        {
+          "step": 5,
+          "action_type": "respond",
+          "latency_seconds": 1.4012,
+          "thought_length": 416,
+          "reasoning_length": 239
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 1.3091,
+        "median_call_latency": 1.0481,
+        "min_call_latency": 0.8121,
+        "max_call_latency": 2.2848,
+        "total_llm_time": 6.5457,
+        "overhead_time": 0.0,
+        "std_dev_latency": 0.5855
+      }
+    },
+    "openai/gpt-oss-20b": {
+      "total_flow_latency_seconds": 0.7673,
+      "llm_calls_made": 1,
+      "individual_call_latencies": [
+        0.7673
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "respond",
+          "latency_seconds": 0.7673,
+          "thought_length": 67,
+          "reasoning_length": 29
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 0.7673,
+        "median_call_latency": 0.7673,
+        "min_call_latency": 0.7673,
+        "max_call_latency": 0.7673,
+        "total_llm_time": 0.7673,
+        "overhead_time": 0.0
+      }
+    },
+    "qwen/qwen3-32b": {
+      "total_flow_latency_seconds": 11.7008,
+      "llm_calls_made": 5,
+      "individual_call_latencies": [
+        2.4607,
+        2.0588,
+        2.5461,
+        1.8312,
+        2.7956
+      ],
+      "step_details": [
+        {
+          "step": 1,
+          "action_type": "threat_intel",
+          "latency_seconds": 2.4607,
+          "thought_length": 316,
+          "reasoning_length": 233
+        },
+        {
+          "step": 2,
+          "action_type": "device_profiler",
+          "latency_seconds": 2.0588,
+          "thought_length": 236,
+          "reasoning_length": 128
+        },
+        {
+          "step": 3,
+          "action_type": "flow_correlation",
+          "latency_seconds": 2.5461,
+          "thought_length": 321,
+          "reasoning_length": 182
+        },
+        {
+          "step": 4,
+          "action_type": "attack_signature",
+          "latency_seconds": 1.8312,
+          "thought_length": 314,
+          "reasoning_length": 165
+        },
+        {
+          "step": 5,
+          "action_type": "respond",
+          "latency_seconds": 2.7956,
+          "thought_length": 290,
+          "reasoning_length": 225
+        }
+      ],
+      "statistics": {
+        "mean_call_latency": 2.3385,
+        "median_call_latency": 2.4607,
+        "min_call_latency": 1.8312,
+        "max_call_latency": 2.7956,
+        "total_llm_time": 11.6923,
+        "overhead_time": 0.0085,
+        "std_dev_latency": 0.3881
+      }
+    }
+  },
+  "summary": {
+    "fastest_model": "meta-llama/llama-prompt-guard-2-22m",
+    "slowest_model": "deepseek-r1-distill-llama-70b",
+    "average_flow_time": 3.7875,
+    "average_call_time": 0.9559,
+    "total_test_duration": "0.00 seconds"
+  }
+}
