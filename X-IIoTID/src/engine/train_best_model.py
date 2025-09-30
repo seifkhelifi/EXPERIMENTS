@@ -19,6 +19,7 @@ from src.utils.seed import set_seed
 from src.utils.plot_figs import plot_training_history, plot_confusion_matrix
 
 from src.data.data_process import run_optimized_pipeline
+from src.data.data_process_smote import run_optimized_pipeline_with_smote
 
 
 def train_model(
@@ -254,7 +255,6 @@ def evaluate_model(
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run optimized training pipeline.")
-
     parser.add_argument(
         "--train_type",
         type=str,
@@ -277,7 +277,21 @@ if __name__ == "__main__":
         help="Choose model variant architecture",
     )
 
+    parser.add_argument(
+        "--sampling",
+        type=str,
+        choices=["normal", "smote"],
+        default="normal",
+        help="Choose data sampling method: 'normal' (no oversampling) or 'smote' (oversampling)",
+    )
+
     args = parser.parse_args()
+
+    # ---- enforce rules ----
+    if args.sampling == "smote" and args.train_type != "multi":
+        parser.error(
+            "SMOTE can only be used with multi-class training. Use --train_type multi."
+        )
 
     set_seed(42)
 
@@ -293,9 +307,10 @@ if __name__ == "__main__":
     archi_config["dropout_rate"] = 0.2729953238135602
 
     # Run pipeline
-    results = run_optimized_pipeline(
-        filepath,
-    )
+    if args.sampling == "normal":
+        results = run_optimized_pipeline(filepath)
+    else:  # smote
+        results = run_optimized_pipeline_with_smote(filepath)
 
     if args.train_type == "binary":
         data = results["binary"]
@@ -327,8 +342,6 @@ if __name__ == "__main__":
     model = ModelFactory.create(args.model_variant, **archi_config)
     print(model.__class__.__name__)
 
-    # Changed to BCEWithLogitsLoss for numerical stability
-    # Changed to Adam for better convergence
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
     print(f"\n{'='*60}")
@@ -336,18 +349,6 @@ if __name__ == "__main__":
         f"🚀 Training Model: {args.model_variant.upper()} | Type: {args.train_type.upper()}"
     )
     print(f"{'='*60}\n")
-
-    # binary_model, binary_history = train_model(
-    #     model,
-    #     args.model_variant,
-    #     train_loader,
-    #     val_loader,
-    #     criterion,
-    #     optimizer,
-    #     device,
-    #     num_epochs=num_epochs,
-    #     is_binary=True if args.train_type == "binary" else False,
-    # )
 
     print(f"\n{'='*60}")
     print(

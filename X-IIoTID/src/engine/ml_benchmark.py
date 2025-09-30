@@ -1,15 +1,34 @@
+import time
+
+
+import sys, os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
+
+import pandas as pd
+import numpy as np
 from sklearn.naive_bayes import GaussianNB
-from sklearn.ensemble import (
-    RandomForestClassifier,
-    GradientBoostingClassifier,
-    ExtraTreesClassifier,
-)
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-import time
+from sklearn.metrics import (
+    accuracy_score,
+    precision_score,
+    recall_score,
+    f1_score,
+    confusion_matrix,
+    classification_report,
+)
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+from src.data.data_process import run_optimized_pipeline
+
+
+import warnings
+
+warnings.filterwarnings("ignore")
 
 
 # New ML Benchmarking System
@@ -32,38 +51,6 @@ class IDSModelBenchmark:
         """Initialize ML models with hyperparameters optimized for IDS"""
         self.model_configs = {
             "Naive Bayes": {"binary": GaussianNB(), "multi": GaussianNB()},
-            # 'Naive Bayes2': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes3': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes4': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes5': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes6': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes7': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes8': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
-            # 'Naive Bayes9': {
-            #     'binary': GaussianNB(),
-            #     'multi': GaussianNB()
-            # },
             "Random Forest": {
                 # Based on IDS literature: 100-200 estimators, max_depth to prevent overfitting
                 "binary": RandomForestClassifier(
@@ -426,68 +413,6 @@ class IDSModelBenchmark:
         plt.tight_layout()
         plt.show()
 
-    def generate_summary_report(self):
-        """Generate comprehensive summary report"""
-        print("\n" + "=" * 80)
-        print("COMPREHENSIVE IDS MODEL PERFORMANCE REPORT")
-        print("=" * 80)
-
-        for task in ["binary", "multi"]:
-            print(f"\n{'-'*50}")
-            print(f"{task.upper()} CLASSIFICATION RESULTS")
-            print(f"{'-'*50}")
-
-            # Create summary table
-            summary_data = []
-            for model_name in self.results[task].keys():
-                result = self.results[task][model_name]
-                summary_data.append(
-                    {
-                        "Model": model_name,
-                        "Val_Acc": result["validation"]["accuracy"],
-                        "Test_Acc": result["test"]["accuracy"],
-                        "Val_F1": result["validation"]["f1"],
-                        "Test_F1": result["test"]["f1"],
-                        "Training_Time": result["training_time"],
-                    }
-                )
-
-            df_summary = pd.DataFrame(summary_data)
-            df_summary = df_summary.sort_values("Test_F1", ascending=False)
-
-            print(df_summary.to_string(index=False, float_format="%.4f"))
-
-            # Best performing model
-            best_model = df_summary.iloc[0]["Model"]
-            best_f1 = df_summary.iloc[0]["Test_F1"]
-            print(f"\nBest performing model: {best_model} (Test F1: {best_f1:.4f})")
-
-        print("\n" + "=" * 80)
-        print("RECOMMENDATIONS FOR IDS IN IIOT")
-        print("=" * 80)
-
-        # Calculate average rankings
-        rankings = {"binary": {}, "multi": {}}
-        for task in ["binary", "multi"]:
-            models_perf = []
-            for model_name in self.results[task].keys():
-                avg_f1 = (
-                    self.results[task][model_name]["validation"]["f1"]
-                    + self.results[task][model_name]["test"]["f1"]
-                ) / 2
-                models_perf.append((model_name, avg_f1))
-
-            models_perf.sort(key=lambda x: x[1], reverse=True)
-            rankings[task] = models_perf
-
-        print(f"\nBINARY Classification Ranking (by avg F1-score):")
-        for i, (model, score) in enumerate(rankings["binary"], 1):
-            print(f"{i}. {model}: {score:.4f}")
-
-        print(f"\nMULTI-CLASS Classification Ranking (by avg F1-score):")
-        for i, (model, score) in enumerate(rankings["multi"], 1):
-            print(f"{i}. {model}: {score:.4f}")
-
 
 # Main execution function
 def run_ids_benchmark(filepath):
@@ -524,30 +449,17 @@ def run_ids_benchmark(filepath):
         raise
 
 
-# Example usage:
-# Replace 'your_dataset.csv' with the path to your actual dataset
-# benchmark_results = run_ids_benchmark('your_dataset.csv')
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Run optimized training pipeline.")
+    filepath = "../data/X-IIoTID dataset.csv"
 
-    parser.add_argument(
-        "--train_type",
-        type=str,
-        choices=["binary", "multi"],
-        default="multi",
-        help="Choose training type: 'binary' or 'multi'",
-    )
+    print("Step 1: Data Preprocessing")
+    data_dict = run_optimized_pipeline(filepath)
 
-    parser.add_argument(
-        "--model_variant",
-        type=str,
-        choices=[
-            "cnn_lstm",
-            "deepresidual_cnn_lstm",
-            "bilstm_cnn",
-            "cnn_lstm_attention",
-            "cnn_gru",
-        ],
-        required=True,
-        help="Choose model variant architecture",
-    )
+    print("\nStep 2: Machine Learning Benchmarking")
+    benchmark = IDSModelBenchmark(data_dict)
+    benchmark.run_benchmark()
+
+    print("\nStep 3: Generating Visualizations")
+    benchmark.plot_performance_comparison()
+    benchmark.plot_confusion_matrices()
+    benchmark.plot_training_times()

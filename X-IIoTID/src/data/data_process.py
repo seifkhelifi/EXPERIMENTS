@@ -264,25 +264,50 @@ def run_optimized_pipeline(filepath):
 
     print(f"\nTotal pipeline time: {time.time() - start_time:.2f} seconds")
 
+    # return {
+    #     "binary": {
+    #         "X_train": X_train_bin_scaled,
+    #         "X_val": X_val_bin_scaled,
+    #         "X_test": X_test_bin_scaled,
+    #         "y_train": y_train_bin,
+    #         "y_val": y_val_bin,
+    #         "y_test": y_test_bin,
+    #         "scaler": scaler_bin,
+    #         "encoders": encoders_bin,
+    #         "label_encoder": le_bin,
+    #     },
+    #     "multi": {
+    #         "X_train": X_train_multi_scaled,
+    #         "X_val": X_val_multi_scaled,
+    #         "X_test": X_test_multi_scaled,
+    #         "y_train": y_train_multi,
+    #         "y_val": y_val_multi,
+    #         "y_test": y_test_multi,
+    #         "scaler": scaler_multi,
+    #         "encoders": encoders_multi,
+    #         "label_encoder": le_multi,
+    #     },
+    # }
+
     return {
         "binary": {
-            "X_train": X_train_bin_scaled,
-            "X_val": X_val_bin_scaled,
-            "X_test": X_test_bin_scaled,
-            "y_train": y_train_bin,
-            "y_val": y_val_bin,
-            "y_test": y_test_bin,
+            "X_train": X_train_bin_scaled[:5],  # just first 5 rows
+            "X_val": X_val_bin_scaled[:5],
+            "X_test": X_test_bin_scaled[:5],
+            "y_train": y_train_bin[:5],
+            "y_val": y_val_bin[:5],
+            "y_test": y_test_bin[:5],
             "scaler": scaler_bin,
             "encoders": encoders_bin,
             "label_encoder": le_bin,
         },
         "multi": {
-            "X_train": X_train_multi_scaled,
-            "X_val": X_val_multi_scaled,
-            "X_test": X_test_multi_scaled,
-            "y_train": y_train_multi,
-            "y_val": y_val_multi,
-            "y_test": y_test_multi,
+            "X_train": X_train_multi_scaled[:5],
+            "X_val": X_val_multi_scaled[:5],
+            "X_test": X_test_multi_scaled[:5],
+            "y_train": y_train_multi[:5],
+            "y_val": y_val_multi[:5],
+            "y_test": y_test_multi[:5],
             "scaler": scaler_multi,
             "encoders": encoders_multi,
             "label_encoder": le_multi,
