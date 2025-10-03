@@ -46,9 +46,9 @@ class ToolRegistry:
 
     def get_tool_descriptions(self) -> str:
         """Get descriptions of all available tools"""
-        return """1. threat_intel: Check IP reputation against threat intelligence feeds
-2. device_profiler: Analyze IoT device behavior patterns and baselines  
-3. protocol_analysis: Deep analysis of IoT protocols (MQTT, CoAP, TCP, UDP)
-4. attack_signature: Match flow patterns against known IoT attack signatures
-5. flow_correlation: Correlate with recent network activity from same source
-6. respond: Provide final security verdict with confidence score"""
+        return """  1. threat_intel: Check IP reputation against threat intelligence feeds
+                    2. device_profiler: Analyze IoT device behavior patterns and baselines  
+                    3. protocol_analysis: Deep analysis of IoT protocols (MQTT, CoAP, TCP, UDP)
+                    4. attack_signature: Match flow patterns against known IoT attack signatures
+                    5. flow_correlation: Correlate with recent network activity from same source
+                    6. respond: Provide final security verdict with confidence score"""

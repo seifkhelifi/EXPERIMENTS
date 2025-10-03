@@ -17,6 +17,7 @@ from src.config.archi_config import archi_config
 from src.utils.metrics import calculate_metrics
 from src.utils.seed import set_seed
 from src.utils.plot_figs import plot_training_history, plot_confusion_matrix
+from src.utils.train_with_loss_lanscape import plot_loss_landscape_2d
 
 from src.data.data_process import run_optimized_pipeline
 from src.data.data_process_smote import run_optimized_pipeline_with_smote
@@ -32,6 +33,7 @@ def train_model(
     device,
     num_epochs=2,
     is_binary=True,
+    plot_every=1,
 ):
     model.to(device)
     best_val_f1 = 0.0
@@ -175,6 +177,20 @@ def train_model(
                 ),
             )
             print("Saved best model!")
+
+        if (epoch + 1) % plot_every == 0:
+            print(f"Plotting smooth loss landscape for epoch {epoch+1}...")
+            plot_loss_landscape_2d(
+                model,
+                criterion,
+                train_loader,
+                device,
+                epoch + 1,
+                param_range=0.3,
+                resolution=20,
+                is_binary=is_binary,
+                smoothing_sigma=1.0,
+            )
 
     # Plot training history
     plot_training_history(history, model_variant, is_binary)
@@ -349,6 +365,19 @@ if __name__ == "__main__":
         f"🚀 Training Model: {args.model_variant.upper()} | Type: {args.train_type.upper()}"
     )
     print(f"{'='*60}\n")
+
+    train_model(
+        model,
+        args.model_variant,
+        train_loader,
+        val_loader,
+        criterion,
+        optimizer,
+        device,
+        num_epochs,
+        is_binary=True if args.train_type == "binary" else False,
+        plot_every=1,
+    )
 
     print(f"\n{'='*60}")
     print(
