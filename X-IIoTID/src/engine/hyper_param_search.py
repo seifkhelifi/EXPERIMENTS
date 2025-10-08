@@ -8,6 +8,9 @@ import argparse
 
 import sys, os
 
+from dotenv import load_dotenv
+
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 from src.models.factory import ModelFactory
@@ -405,6 +408,12 @@ if __name__ == "__main__":
         )
 
     set_seed(42)
+    
+    load_dotenv()
+    api_key = os.getenv("WANB_DB_KEY")
+    
+    wandb.login(key=api_key)
+
 
     filepath = "../data/X-IIoTID dataset.csv"
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

@@ -14,3 +14,7 @@ wandb
 
 # Miscellaneous utilities
 argparse
+
+
+# Environment management (optional)
+python-dotenv
