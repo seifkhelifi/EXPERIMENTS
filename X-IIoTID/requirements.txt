@@ -1,0 +1,16 @@
+# Core scientific and machine learning libraries
+numpy
+pandas
+scikit-learn
+torch
+imbalanced-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# Experiment tracking and configuration
+wandb
+
+# Miscellaneous utilities
+argparse
