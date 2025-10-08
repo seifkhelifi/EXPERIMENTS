@@ -1,0 +1,76 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            d0pi0g56979d0340kj0yndg00ae4suc8:
+                args:
+                    - --train_type
+                    - binary
+                    - --sampling
+                    - normal
+                    - --model_variant
+                    - transformer
+                codePath: X-IIoTID\src\engine\hyper_param_search.py
+                codePathLocal: hyper_param_search.py
+                cpu_count: 12
+                cpu_count_logical: 16
+                cudaVersion: "12.9"
+                disk:
+                    /:
+                        total: "510930186240"
+                        used: "461502541824"
+                email: khelifiseif1@gmail.com
+                executable: C:\Python311\python.exe
+                git:
+                    commit: 71b77620c7919efc416fc8210960fb84812107fd
+                    remote: https://github.com/seifkhelifi/EXPERIMENTS.git
+                gpu: NVIDIA GeForce RTX 3050 Laptop GPU
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Ampere
+                      cudaCores: 2048
+                      memoryTotal: "4294967296"
+                      name: NVIDIA GeForce RTX 3050 Laptop GPU
+                      uuid: GPU-7290d439-dbff-fec8-c758-a2b559dc23e2
+                host: DESKTOP-AN4INLM
+                memory:
+                    total: "25439227904"
+                os: Windows-10-10.0.26100-SP0
+                program: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py
+                python: CPython 3.11.4
+                root: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine
+                startedAt: "2025-10-07T11:11:18.179771Z"
+                writerId: d0pi0g56979d0340kj0yndg00ae4suc8
+        m: []
+        python_version: 3.11.4
+        t:
+            "1":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+            "2":
+                - 1
+                - 5
+                - 11
+                - 49
+                - 53
+            "3":
+                - 2
+                - 14
+            "4": 3.11.4
+            "5": 0.21.0
+            "6": 4.39.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+batch_size:
+    value: 64
+dropout_rate:
+    value: 0.400680191574206
+epochs:
+    value: 2
+learning_rate:
+    value: 1.7741910085319793e-05

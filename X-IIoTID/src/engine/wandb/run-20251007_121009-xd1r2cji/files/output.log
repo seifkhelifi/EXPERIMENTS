@@ -1,0 +1,6 @@
+Epoch [1/2]:
+  Train Loss: 0.6871, Train F1: 0.8000
+  Val Loss: 0.6947, Val F1: 0.0000
+Epoch [2/2]:
+  Train Loss: 0.6805, Train F1: 0.5000
+  Val Loss: 0.6941, Val F1: 0.4000

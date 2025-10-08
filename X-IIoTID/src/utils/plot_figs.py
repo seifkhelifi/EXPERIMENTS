@@ -69,7 +69,7 @@ def plot_training_history(
     # Make the last subplot invisible
     axes[2, 1].axis("off")
 
-    output_dir = "figs/history"
+    output_dir = "./out/figs/history"
     os.makedirs(output_dir, exist_ok=True)  # create folder if not exists
 
     plt.tight_layout(rect=[0, 0, 1, 0.96])
@@ -78,7 +78,6 @@ def plot_training_history(
             output_dir, f"{model_variant}-{model_type.lower()}_training_history.png"
         )
     )
-    plt.show()
 
     # Function to plot confusion matrix with hardcoded labels
 
@@ -132,7 +131,7 @@ def plot_confusion_matrix(y_true, y_pred, model_variant, is_binary=True):
     plt.xticks(rotation=45, ha="right")
     plt.yticks(rotation=0)
 
-    output_dir = "figs/confusion_matrices"
+    output_dir = "./out/figs/confusion_matrices"
     os.makedirs(output_dir, exist_ok=True)  # create folder if it doesn't exist
 
     plt.tight_layout()
@@ -141,4 +140,136 @@ def plot_confusion_matrix(y_true, y_pred, model_variant, is_binary=True):
             output_dir, f"{model_variant}-{model_type.lower()}_confusion_matrix.png"
         )
     )
-    plt.show()
+
+
+import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import (
+    confusion_matrix,
+    precision_recall_curve,
+    average_precision_score,
+)
+import numpy as np
+
+
+# === existing functions remain unchanged ===
+
+
+def plot_pr_curve(y_true, y_score, model_variant, is_binary=True):
+    """Plots Precision-Recall curve and AUPRC value."""
+    model_type = "Binary" if is_binary else "Multi-class"
+
+    if is_binary:
+        precision, recall, _ = precision_recall_curve(y_true, y_score)
+        auprc = average_precision_score(y_true, y_score)
+    else:
+        # For multi-class: compute micro-average curve
+        from sklearn.preprocessing import label_binarize
+
+        n_classes = len(np.unique(y_true))
+        y_true_bin = label_binarize(y_true, classes=np.arange(n_classes))
+        precision, recall, _ = precision_recall_curve(
+            y_true_bin.ravel(), y_score.ravel()
+        )
+        auprc = average_precision_score(y_true_bin, y_score, average="macro")
+
+    plt.figure(figsize=(8, 6))
+    plt.plot(recall, precision, label=f"AUPRC = {auprc:.4f}")
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
+    plt.title(f"{model_type} Classification - Precision-Recall Curve")
+    plt.legend()
+
+    output_dir = "./out/figs/pr_curves"
+    os.makedirs(output_dir, exist_ok=True)
+    plt.savefig(
+        os.path.join(output_dir, f"{model_variant}-{model_type.lower()}_pr_curve.png")
+    )
+
+
+# def plot_per_class_confusion_matrix(y_true, y_pred, class_labels, model_variant):
+#     """Plots per-class confusion matrix with normalized percentages."""
+#     cm = confusion_matrix(y_true, y_pred, normalize="true")
+
+#     plt.figure(figsize=(12, 10))
+#     sns.heatmap(
+#         cm,
+#         annot=True,
+#         fmt=".2f",
+#         cmap="Blues",
+#         xticklabels=class_labels,
+#         yticklabels=class_labels,
+#     )
+
+#     plt.title("Per-Class Normalized Confusion Matrix")
+#     plt.ylabel("True Label")
+#     plt.xlabel("Predicted Label")
+#     plt.xticks(rotation=45, ha="right")
+#     plt.yticks(rotation=0)
+
+#     output_dir = "figs/confusion_matrices_per_class"
+#     os.makedirs(output_dir, exist_ok=True)
+#     plt.tight_layout()
+#     plt.savefig(os.path.join(output_dir, f"{model_variant}_per_class_conf_matrix.png"))
+#     plt.show()
+
+
+def plot_per_class_confusion_matrix(y_true, y_pred, model_variant, is_binary=True):
+    """Plots normalized per-class confusion matrix with class names."""
+    model_type = "Binary" if is_binary else "Multi-class"
+
+    # Class labels (same as in your plot_confusion_matrix)
+    if is_binary:
+        class_labels = ["Attack", "Normal"]
+    else:
+        class_labels = [
+            "BruteForce",
+            "C&C",
+            "Dictionary",
+            "Discovering_resources",
+            "Exfiltration",
+            "Fake_notification",
+            "False_data_injection",
+            "Generic_scanning",
+            "MQTT_cloud_broker_subscription",
+            "MitM",
+            "Modbus_register_reading",
+            "Normal",
+            "RDOS",
+            "Reverse_shell",
+            "Scanning_vulnerability",
+            "TCP Relay",
+            "crypto-ransomware",
+            "fuzzing",
+            "insider_malcious",
+        ]
+
+    # Compute normalized confusion matrix
+    cm = confusion_matrix(y_true, y_pred, normalize="true")
+
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt=".2f",
+        cmap="Blues",
+        xticklabels=class_labels,
+        yticklabels=class_labels,
+    )
+
+    plt.title(f"{model_type} Classification - Per-Class Normalized Confusion Matrix")
+    plt.ylabel("True Label")
+    plt.xlabel("Predicted Label")
+    plt.xticks(rotation=45, ha="right")
+    plt.yticks(rotation=0)
+
+    output_dir = "./out/figs/confusion_matrices_per_class"
+    os.makedirs(output_dir, exist_ok=True)
+    plt.tight_layout()
+    plt.savefig(
+        os.path.join(
+            output_dir,
+            f"{model_variant}_{model_type.lower()}_per_class_conf_matrix.png",
+        )
+    )

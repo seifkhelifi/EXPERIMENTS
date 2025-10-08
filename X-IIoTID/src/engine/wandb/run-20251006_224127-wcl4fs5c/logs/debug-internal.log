@@ -1,0 +1,6 @@
+{"time":"2025-10-06T22:41:28.1033662+01:00","level":"INFO","msg":"stream: starting","core version":"0.21.0"}
+{"time":"2025-10-06T22:41:28.6856389+01:00","level":"INFO","msg":"stream: created new stream","id":"wcl4fs5c"}
+{"time":"2025-10-06T22:41:28.6856389+01:00","level":"INFO","msg":"stream: started","id":"wcl4fs5c"}
+{"time":"2025-10-06T22:41:28.6863728+01:00","level":"INFO","msg":"writer: Do: started","stream_id":"wcl4fs5c"}
+{"time":"2025-10-06T22:41:28.6868836+01:00","level":"INFO","msg":"handler: started","stream_id":"wcl4fs5c"}
+{"time":"2025-10-06T22:41:28.6868836+01:00","level":"INFO","msg":"sender: started","stream_id":"wcl4fs5c"}

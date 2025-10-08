@@ -3,5 +3,6 @@ src/__pycache__/
 *.pyc
 
 src/data/X-IIoTID dataset.csv
+src/engine/out
 
 .env

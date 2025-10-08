@@ -87,12 +87,13 @@ def plot_loss_landscape_2d(
                 total_loss, batch_count = 0, 0
                 # Use more batches for better loss estimation
                 for inputs, targets in data_loader:
+                    # targets = targets.float()
                     if batch_count >= 10:  # Increased from 5 to 10
                         break
                     inputs, targets = inputs.to(device), targets.to(device)
                     outputs = model(inputs)
                     if is_binary:
-                        targets = targets.view(-1, 1)
+                        targets = targets.view(-1, 1).float()
                     loss = criterion(outputs, targets)
                     total_loss += loss.item()
                     batch_count += 1
@@ -124,12 +125,13 @@ def plot_loss_landscape_2d(
     current_loss, batch_count = 0, 0
     with torch.no_grad():
         for inputs, targets in data_loader:
+            # targets = targets.float()
             if batch_count >= 10:
                 break
             inputs, targets = inputs.to(device), targets.to(device)
             outputs = model(inputs)
             if is_binary:
-                targets = targets.view(-1, 1)
+                targets = targets.view(-1, 1).float()
             loss = criterion(outputs, targets)
             current_loss += loss.item()
             batch_count += 1
@@ -164,6 +166,7 @@ def plot_loss_landscape_2d(
     cbar = plt.colorbar(surf, ax=ax, shrink=0.5, aspect=20)
     cbar.set_label("Loss Value")
 
+    output_dir = "/out/figs/metric_distributions"
     plt.tight_layout()
     plt.show()
 

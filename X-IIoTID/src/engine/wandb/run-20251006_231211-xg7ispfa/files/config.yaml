@@ -1,0 +1,54 @@
+_wandb:
+    value:
+        cli_version: 0.21.0
+        e:
+            pkdj5biwb9ma9e5btc6vbtd0iifzxp6p:
+                args:
+                    - --train_type
+                    - binary
+                    - --sampling
+                    - normal
+                    - --model_variant
+                    - cnn_lstm
+                codePath: X-IIoTID\src\engine\hyper_param_search.py
+                codePathLocal: hyper_param_search.py
+                email: khelifiseif1@gmail.com
+                executable: C:\Python311\python.exe
+                git:
+                    commit: 71b77620c7919efc416fc8210960fb84812107fd
+                    remote: https://github.com/seifkhelifi/EXPERIMENTS.git
+                host: DESKTOP-AN4INLM
+                os: Windows-10-10.0.26100-SP0
+                program: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\hyper_param_search.py
+                python: CPython 3.11.4
+                root: C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine
+                startedAt: "2025-10-06T22:12:11.353100Z"
+                writerId: pkdj5biwb9ma9e5btc6vbtd0iifzxp6p
+        m: []
+        python_version: 3.11.4
+        t:
+            "1":
+                - 1
+                - 5
+                - 53
+            "2":
+                - 1
+                - 5
+                - 53
+            "3":
+                - 2
+                - 14
+            "4": 3.11.4
+            "5": 0.21.0
+            "8":
+                - 3
+            "12": 0.21.0
+            "13": windows-amd64
+batch_size:
+    value: 128
+dropout_rate:
+    value: 0.4102150657426038
+epochs:
+    value: 2
+learning_rate:
+    value: 7.836989651294364e-05

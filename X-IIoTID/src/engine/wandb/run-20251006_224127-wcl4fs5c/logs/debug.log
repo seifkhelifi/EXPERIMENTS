@@ -1,0 +1,26 @@
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_setup.py:_flush():80] Current SDK version is 0.21.0
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_setup.py:_flush():80] Configure stats pid to 25160
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_setup.py:_flush():80] Loading settings from C:\Users\dell\.config\wandb\settings
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_setup.py:_flush():80] Loading settings from C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\wandb\settings
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_init.py:setup_run_log_directory():703] Logging user logs to C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\wandb\run-20251006_224127-wcl4fs5c\logs\debug.log
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_init.py:setup_run_log_directory():704] Logging internal logs to C:\Users\dell\Desktop\experiemnts\X-IIoTID\src\engine\wandb\run-20251006_224127-wcl4fs5c\logs\debug-internal.log
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():830] calling init triggers
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():835] wandb.init called with sweep_config: {'batch_size': 32, 'dropout_rate': 0.5872891606881401, 'epochs': 2, 'learning_rate': 1.35494210175936e-05}
+config: {'_wandb': {}}
+2025-10-06 22:41:27,883 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():871] starting backend
+2025-10-06 22:41:28,096 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():874] sending inform_init request
+2025-10-06 22:41:28,096 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():882] backend started and connected
+2025-10-06 22:41:28,100 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_config_callback():1363] config_cb None None {'batch_size': 32, 'dropout_rate': 0.5872891606881401, 'epochs': 2, 'learning_rate': 1.35494210175936e-05}
+2025-10-06 22:41:28,100 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():953] updated telemetry
+2025-10-06 22:41:28,165 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():977] communicating run to backend with 90.0 second timeout
+2025-10-06 22:41:29,141 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():1029] starting run threads in backend
+2025-10-06 22:41:29,368 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_console_start():2458] atexit reg
+2025-10-06 22:41:29,369 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_redirect():2306] redirect: wrap_raw
+2025-10-06 22:41:29,369 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_redirect():2375] Wrapping output streams.
+2025-10-06 22:41:29,369 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_redirect():2398] Redirects installed.
+2025-10-06 22:41:29,369 INFO    Thread-13 (_run_job):25160 [wandb_init.py:init():1075] run started, returning control to user process
+2025-10-06 22:41:56,300 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_finish():2224] finishing run khelifiseif1-null/X-IIoTID-simple_gnn-binary-classification-random-search/wcl4fs5c
+2025-10-06 22:41:56,300 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_atexit_cleanup():2423] got exitcode: 1
+2025-10-06 22:41:56,300 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_restore():2405] restore
+2025-10-06 22:41:56,301 INFO    Thread-13 (_run_job):25160 [wandb_run.py:_restore():2411] restore done
